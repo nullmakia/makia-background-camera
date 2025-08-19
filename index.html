@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Street View × キャラ × 音声会話</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- ★追加：カメラ背景（Street View の下に置くなら順序は video → pano） -->
+  <video id="cam" class="bgcam" autoplay playsinline muted></video>
+
+  <div id="pano" aria-label="Street View 背景"></div>
+
+  <!-- 前景キャラ -->
+  <div class="sprite boy" id="boy"></div>
+  <div class="sprite dog" id="dog"></div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div>状態: <span id="st">初期化中…</span></div>
+    <div>速度: <span id="spd">0.0</span> m/s　方位: <span id="hdg">—</span>°</div>
+  </div>
+
+  <!-- テロップ / マイク -->
+  <div id="aiTelopBox"><span id="aiTelop">タップで開始</span></div>
+  <button id="micBtn">🎤 マイクを開始</button>
+  <button id="stopBtn" disabled>■ 停止</button>
+
+  <!-- ★追加：カメラ切替ボタン -->
+  <button id="camBtn" style="position:fixed; right:12px; bottom:130px; z-index:4001; padding:10px 12px; border:1px solid #111; background:#006adc; color:#fff; border-radius:10px;">
+    📷 カメラON
+  </button>
+
+  <div class="meter"><div id="levelBar" class="bar"></div></div>
+
+  <!-- エントリポイント（ES Modules） -->
+  <script type="module" src="./main.js"></script>
+
+  <!-- Google Maps API（asyncでOK。streetview.js側で準備待ちします） -->
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQQHZONAJ27HZwG20IJbRYZXZ6ADxbtP0&v=weekly"></script>
+</body>
+</html>
